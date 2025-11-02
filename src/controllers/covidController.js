@@ -13,7 +13,7 @@ export const fetchCountries = async () => {
 };
 
 export const fetchCountryHistorical = async (country) => {
-  try {
+  //try {
     const data = await CovidService.getCountryHistorical(country);
     const dates = Object.keys(data.timeline.cases);
     const formatted = dates.map((date) => ({
@@ -23,8 +23,24 @@ export const fetchCountryHistorical = async (country) => {
       recovered: data.timeline.recovered[date],
     }));
     return formatted.sort((a, b) => new Date(a.date) - new Date(b.date));
-  } catch (error) {
+  /*} catch (error) {
     console.error('Error al obtener histórico:', error);
+    throw error;
+  }*/
+};
+
+export const fetchGlobalStats = async () => {
+  try {
+    const data = await CovidService.getGlobalStats();
+    return {
+      cases: data.cases,
+      deaths: data.deaths,
+      recovered: data.recovered,
+      updated: data.updated,
+    };
+  } catch (error) {
+    console.error('Error al obtener estadísticas globales:', error);
     throw error;
   }
 };
+

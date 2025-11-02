@@ -8,8 +8,6 @@ export default function CountryCard({ country, onPress }: any) {
       <View style={styles.info}>
         <Text style={styles.name}>{country.name}</Text>
         <Text>Casos: {country.cases.toLocaleString()}</Text>
-        <Text>Recuperados: {country.recovered.toLocaleString()}</Text>
-        <Text>Decesos: {country.deaths.toLocaleString()}</Text>
       </View>
     </TouchableOpacity>
   );

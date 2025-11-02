@@ -9,4 +9,10 @@ export const CovidService = {
     const { data } = await apiClient.get(`/historical/${country}?lastdays=30`);
     return data;
   },
+  
+  getGlobalStats: async () => {
+    const { data } = await apiClient.get('/all');
+    return data;
+  },
 };
+
